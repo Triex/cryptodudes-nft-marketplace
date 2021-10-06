@@ -19,6 +19,15 @@ const CryptoDudeNFTImage = ({ colors }) => {
     bodyBorderColor,
   } = colors;
 
+  const {
+    leftEyeWidth = '60',
+    leftEyeHeight = '60',
+    rightEyeWidth = '70',
+    rightEyeHeight = '70',
+    mouthWidth = '30',
+    bodyWidth = '90',
+  } = pixels;
+
   const cryptoboy_card = {
     width: "280px",
     height: "260px",
@@ -40,8 +49,8 @@ const CryptoDudeNFTImage = ({ colors }) => {
 
   const eyeLeft = {
     zIndex: "1",
-    width: "60px",
-    height: "60px",
+    width: `${leftEyeWidth}px`, // allow set 60px default
+    height: `${leftEyeHeight}px`, // allow set 60px default
     backgroundColor: `${leftEyeBackgroundColor}`,
     borderRadius: "50%",
     position: "absolute",
@@ -51,9 +60,9 @@ const CryptoDudeNFTImage = ({ colors }) => {
   };
 
   const eyeRight = {
-    zIndex: "1",
-    width: "70px",
-    height: "70px",
+    zIndex: "1", 
+    width: `${rightEyeWidth}px`, // allow set 70px default
+    height: `${rightEyeHeight}px`, // allow set 70px default
     backgroundColor: `${rightEyeBackgroundColor}`,
     borderRadius: "50%",
     position: "absolute",
@@ -88,7 +97,7 @@ const CryptoDudeNFTImage = ({ colors }) => {
     left: "0",
     right: "0",
     height: "60px",
-    width: "60px",
+    width: `${mouthWidth}px`, // allow set 30px default
     margin: "3px auto",
     borderRadius: "100%",
     borderBottom: `8px solid ${mouthColor}`,
@@ -96,17 +105,17 @@ const CryptoDudeNFTImage = ({ colors }) => {
 
   const neck = {
     position: "relative",
-    left: "7.7rem",
+    left: "7.22rem",
     top: "-0.1rem",
-    width: "15px",
-    height: "30px",
+    width: "30px",
+    height: "15px",
     backgroundColor: `${neckBackgroundColor}`,
     border: `4px solid ${neckBorderColor}`,
   };
 
   const body = {
     height: "50px",
-    width: "90px",
+    width: `${bodyWidth}px`, // allow set 90px default
     margin: "-0.4rem auto",
     border: `5px solid ${bodyBorderColor}`,
     borderRadius: "100% 100% 100% 100% / 100% 100% 0% 0%",

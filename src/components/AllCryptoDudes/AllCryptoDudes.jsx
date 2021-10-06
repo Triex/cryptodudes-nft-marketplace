@@ -4,7 +4,7 @@ import CryptoDudeNFTDetails from "../CryptoDudeNFTDetails/CryptoDudeNFTDetails";
 import Loading from "../Loading/Loading";
 
 const AllCryptoDudes = ({
-  cryptoBoys,
+  cryptoDudes,
   accountAddress,
   totalTokensMinted,
   changeTokenPrice,
@@ -14,14 +14,14 @@ const AllCryptoDudes = ({
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (cryptoBoys.length !== 0) {
-      if (cryptoBoys[0].metaData !== undefined) {
+    if (cryptoDudes.length !== 0) {
+      if (cryptoDudes[0].metaData !== undefined) {
         setLoading(loading);
       } else {
         setLoading(false);
       }
     }
-  }, [cryptoBoys]);
+  }, [cryptoDudes]);
 
   return (
     <div>
@@ -34,7 +34,7 @@ const AllCryptoDudes = ({
         </div>
       </div>
       <div className="d-flex flex-wrap mb-2">
-        {cryptoBoys.map((cryptoboy) => {
+        {cryptoDudes.map((cryptoboy) => {
           return (
             <div
               key={cryptoboy.tokenId.toNumber()}

@@ -5,25 +5,25 @@ import Loading from "../Loading/Loading";
 
 const MyCryptoDudes = ({
   accountAddress,
-  cryptoBoys,
+  cryptoDudes,
   totalTokensOwnedByAccount,
 }) => {
   const [loading, setLoading] = useState(false);
   const [myCryptoDudes, setMyCryptoDudes] = useState([]);
 
   useEffect(() => {
-    if (cryptoBoys.length !== 0) {
-      if (cryptoBoys[0].metaData !== undefined) {
+    if (cryptoDudes.length !== 0) {
+      if (cryptoDudes[0].metaData !== undefined) {
         setLoading(loading);
       } else {
         setLoading(false);
       }
     }
-    const my_crypto_boys = cryptoBoys.filter(
+    const my_crypto_boys = cryptoDudes.filter(
       (cryptoboy) => cryptoboy.currentOwner === accountAddress
     );
     setMyCryptoDudes(my_crypto_boys);
-  }, [cryptoBoys]);
+  }, [cryptoDudes]);
 
   return (
     <div>

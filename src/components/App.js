@@ -27,9 +27,9 @@ class App extends Component {
     this.state = {
       accountAddress: "",
       accountBalance: "",
-      cryptoBoysContract: null,
-      cryptoBoysCount: 0,
-      cryptoBoys: [],
+      cryptoDudesContract: null,
+      cryptoDudesCount: 0,
+      cryptoDudes: [],
       loading: true,
       metamaskConnected: false,
       contractDetected: false,
@@ -111,30 +111,30 @@ class App extends Component {
       const networkData = CryptoDudes.networks[networkId];
       if (networkData) {
         this.setState({ loading: true });
-        const cryptoBoysContract = web3.eth.Contract(
+        const cryptoDudesContract = web3.eth.Contract(
           CryptoDudes.abi,
           networkData.address
         );
-        this.setState({ cryptoBoysContract });
+        this.setState({ cryptoDudesContract });
         this.setState({ contractDetected: true });
-        const cryptoBoysCount = await cryptoBoysContract.methods
-          .cryptoBoyCounter()
+        const cryptoDudesCount = await cryptoDudesContract.methods
+          .cryptoDudeCounter()
           .call();
-        this.setState({ cryptoBoysCount });
-        for (var i = 1; i <= cryptoBoysCount; i++) {
-          const cryptoBoy = await cryptoBoysContract.methods
+        this.setState({ cryptoDudesCount });
+        for (var i = 1; i <= cryptoDudesCount; i++) {
+          const cryptoDude = await cryptoDudesContract.methods
             .allCryptoDudes(i)
             .call();
           this.setState({
-            cryptoBoys: [...this.state.cryptoBoys, cryptoBoy],
+            cryptoDudes: [...this.state.cryptoDudes, cryptoDude],
           });
         }
-        let totalTokensMinted = await cryptoBoysContract.methods
+        let totalTokensMinted = await cryptoDudesContract.methods
           .getNumberOfTokensMinted()
           .call();
         totalTokensMinted = totalTokensMinted.toNumber();
         this.setState({ totalTokensMinted });
-        let totalTokensOwnedByAccount = await cryptoBoysContract.methods
+        let totalTokensOwnedByAccount = await cryptoDudesContract.methods
           .getTotalNumberOfTokensOwnedByAnAddress(this.state.accountAddress)
           .call();
         totalTokensOwnedByAccount = totalTokensOwnedByAccount.toNumber();
@@ -153,12 +153,12 @@ class App extends Component {
   };
 
   setMetaData = async () => {
-    if (this.state.cryptoBoys.length !== 0) {
-      this.state.cryptoBoys.map(async (cryptoboy) => {
+    if (this.state.cryptoDudes.length !== 0) {
+      this.state.cryptoDudes.map(async (cryptoboy) => {
         const result = await fetch(cryptoboy.tokenURI);
         const metaData = await result.json();
         this.setState({
-          cryptoBoys: this.state.cryptoBoys.map((cryptoboy) =>
+          cryptoDudes: this.state.cryptoDudes.map((cryptoboy) =>
             cryptoboy.tokenId.toNumber() === Number(metaData.tokenId)
               ? {
                   ...cryptoboy,
@@ -177,7 +177,7 @@ class App extends Component {
     let colorsUsed = [];
     for (let i = 0; i < colorsArray.length; i++) {
       if (colorsArray[i] !== "") {
-        let colorIsUsed = await this.state.cryptoBoysContract.methods
+        let colorIsUsed = await this.state.cryptoDudesContract.methods
           .colorExists(colorsArray[i])
           .call();
         if (colorIsUsed) {
@@ -187,30 +187,30 @@ class App extends Component {
         }
       }
     }
-    const nameIsUsed = await this.state.cryptoBoysContract.methods
+    const nameIsUsed = await this.state.cryptoDudesContract.methods
       .tokenNameExists(name)
       .call();
     if (colorsUsed.length === 0 && !nameIsUsed) {
       const {
-        cardBorderColor,
-        cardBackgroundColor,
-        headBorderColor,
-        headBackgroundColor,
-        leftEyeBorderColor,
-        rightEyeBorderColor,
-        leftEyeBackgroundColor,
-        rightEyeBackgroundColor,
-        leftPupilBackgroundColor,
-        rightPupilBackgroundColor,
-        mouthColor,
-        neckBackgroundColor,
-        neckBorderColor,
-        bodyBackgroundColor,
-        bodyBorderColor,
+              cardBorderColor,
+              cardBackgroundColor,
+              headBorderColor,
+              headBackgroundColor,
+              leftEyeBorderColor,
+              rightEyeBorderColor,
+              leftEyeBackgroundColor,
+              rightEyeBackgroundColor,
+              leftPupilBackgroundColor,
+              rightPupilBackgroundColor,
+              mouthColor,
+              neckBackgroundColor,
+              neckBorderColor,
+              bodyBackgroundColor,
+              bodyBorderColor,
       } = colors;
       let previousTokenId;
-      previousTokenId = await this.state.cryptoBoysContract.methods
-        .cryptoBoyCounter()
+      previousTokenId = await this.state.cryptoDudesContract.methods
+        .cryptoDudeCounter()
         .call();
       previousTokenId = previousTokenId.toNumber();
       const tokenId = previousTokenId + 1;
@@ -238,12 +238,23 @@ class App extends Component {
             bodyBackgroundColor,
             bodyBorderColor,
           },
+          metaData: {
+            type: "pixels",
+            pixels: {
+              leftEyeWidth,
+              leftEyeHeight,
+              rightEyeWidth,
+              rightEyeHeight,
+              mouthWidth,
+              bodyWidth,
+            },
+          },
         },
       };
       const cid = await ipfs.add(JSON.stringify(tokenObject));
       let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
       const price = window.web3.utils.toWei(tokenPrice.toString(), "Ether");
-      this.state.cryptoBoysContract.methods
+      this.state.cryptoDudesContract.methods
         .mintCryptoDude(name, tokenURI, price, colorsArray)
         .send({ from: this.state.accountAddress })
         .on("confirmation", () => {
@@ -265,7 +276,7 @@ class App extends Component {
 
   toggleForSale = (tokenId) => {
     this.setState({ loading: true });
-    this.state.cryptoBoysContract.methods
+    this.state.cryptoDudesContract.methods
       .toggleForSale(tokenId)
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
@@ -277,7 +288,7 @@ class App extends Component {
   changeTokenPrice = (tokenId, newPrice) => {
     this.setState({ loading: true });
     const newTokenPrice = window.web3.utils.toWei(newPrice, "Ether");
-    this.state.cryptoBoysContract.methods
+    this.state.cryptoDudesContract.methods
       .changeTokenPrice(tokenId, newTokenPrice)
       .send({ from: this.state.accountAddress })
       .on("confirmation", () => {
@@ -288,7 +299,7 @@ class App extends Component {
 
   buyCryptoDude = (tokenId, price) => {
     this.setState({ loading: true });
-    this.state.cryptoBoysContract.methods
+    this.state.cryptoDudesContract.methods
       .buyToken(tokenId)
       .send({ from: this.state.accountAddress, value: price })
       .on("confirmation", () => {
@@ -337,7 +348,7 @@ class App extends Component {
                 render={() => (
                   <AllCryptoDudes
                     accountAddress={this.state.accountAddress}
-                    cryptoBoys={this.state.cryptoBoys}
+                    cryptoDudes={this.state.cryptoDudes}
                     totalTokensMinted={this.state.totalTokensMinted}
                     changeTokenPrice={this.changeTokenPrice}
                     toggleForSale={this.toggleForSale}
@@ -350,7 +361,7 @@ class App extends Component {
                 render={() => (
                   <MyCryptoDudes
                     accountAddress={this.state.accountAddress}
-                    cryptoBoys={this.state.cryptoBoys}
+                    cryptoDudes={this.state.cryptoDudes}
                     totalTokensOwnedByAccount={
                       this.state.totalTokensOwnedByAccount
                     }
@@ -360,7 +371,7 @@ class App extends Component {
               <Route
                 path="/queries"
                 render={() => (
-                  <Queries cryptoBoysContract={this.state.cryptoBoysContract} />
+                  <Queries cryptoDudesContract={this.state.cryptoDudesContract} />
                 )}
               />
             </HashRouter>

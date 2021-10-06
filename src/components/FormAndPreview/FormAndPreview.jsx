@@ -24,9 +24,19 @@ class FormAndPreview extends Component {
           bodyBorderColor: "",
         },
       ],
-      cryptoBoyName: "",
-      cryptoBoyPrice: "",
+      cryptoDudeName: "",
+      cryptoDudePrice: "",
     };
+    userSelectedPixels: [
+      {
+          leftEyeWidth: "60",
+          leftEyeHeight: "60",
+          rightEyeWidth: "70",
+          rightEyeHeight: "70",
+          mouthWidth: "30",
+          bodyWidth: "90",
+      },
+    ],
   }
 
   componentDidMount = async () => {
@@ -37,8 +47,8 @@ class FormAndPreview extends Component {
     e.preventDefault();
     this.props.mintMyNFT(
       this.state.userSelectedColors[0],
-      this.state.cryptoBoyName,
-      this.state.cryptoBoyPrice
+      this.state.cryptoDudeName,
+      this.state.cryptoDudePrice
     );
   };
 
@@ -135,6 +145,48 @@ class FormAndPreview extends Component {
                         {
                           ...this.state.userSelectedColors[0],
                           headBackgroundColor: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
+                <div className="form-group">
+                <label htmlFor="leftEyeWidth">Left Eye Width</label>
+                <input
+                  required
+                  type="number"
+                  name="leftEyeWidth"
+                  id="leftEyeWidth"
+                  value={this.state.userSelectedPixels[0].leftEyeWidth}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          leftEyeWidth: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="leftEyeHeight">Left Eye Height</label>
+                <input
+                  required
+                  type="number"
+                  name="leftEyeHeight"
+                  id="leftEyeHeight"
+                  value={this.state.userSelectedPixels[0].leftEyeHeight}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          leftEyeHeight: e.target.value,
                         },
                       ],
                     })
@@ -239,6 +291,48 @@ class FormAndPreview extends Component {
                   }
                 />
               </div>
+               <div className="form-group">
+                <label htmlFor="rightEyeWidth">Right Eye Width</label>
+                <input
+                  required
+                  type="number"
+                  name="rightEyeWidth"
+                  id="rightEyeWidth"
+                  value={this.state.userSelectedPixels[0].rightEyeWidth}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          rightEyeWidth: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="rightEyeHeight">Right Eye Height</label>
+                <input
+                  required
+                  type="number"
+                  name="rightEyeHeight"
+                  id="rightEyeHeight"
+                  value={this.state.userSelectedPixels[0].rightEyeHeight}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          rightEyeHeight: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
             </div>
             <div className="col-md-6 d-flex justify-content-center align-items-center">
               <CryptoDudeNFTImage colors={this.state.userSelectedColors[0]} />
@@ -317,6 +411,30 @@ class FormAndPreview extends Component {
                   }
                 />
               </div>
+              
+              <div className="form-group">
+                <label htmlFor="mouthWidth">Mouth Width</label>
+                <input
+                  required
+                  type="number"
+                  name="mouthWidth"
+                  id="mouthWidth"
+                  max="90"
+                  value={this.state.userSelectedPixels[0].mouthWidth}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          mouthWidth: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
+
               <div className="form-group">
                 <label htmlFor="neckBackgroundColor">
                   Neck Background Color
@@ -407,18 +525,42 @@ class FormAndPreview extends Component {
                   }
                 />
               </div>
+                            
+              <div className="form-group">
+                <label htmlFor="bodyWidth">Body Width</label>
+                <input
+                  required
+                  type="number"
+                  name="bodyWidth"
+                  id="bodyWidth"
+                  max="200"
+                  value={this.state.userSelectedPixels[0].bodyWidth}
+                  className="form-control"
+                  onChange={(e) =>
+                    this.setState({
+                      userSelectedPixels: [
+                        {
+                          ...this.state.userSelectedPixels[0],
+                          bodyWidth: e.target.value,
+                        },
+                      ],
+                    })
+                  }
+                />
+              </div>
+
             </div>
             <div className="col-md-6">
               <div className="form-group">
-                <label htmlFor="cryptoBoyName">Name</label>
+                <label htmlFor="cryptoDudeName">Name</label>
                 <input
                   required
                   type="text"
-                  value={this.state.cryptoBoyName}
+                  value={this.state.cryptoDudeName}
                   className="form-control"
                   placeholder="Enter Your Crypto Dude's Name"
                   onChange={(e) =>
-                    this.setState({ cryptoBoyName: e.target.value })
+                    this.setState({ cryptoDudeName: e.target.value })
                   }
                 />
               </div>
@@ -428,12 +570,12 @@ class FormAndPreview extends Component {
                   required
                   type="number"
                   name="price"
-                  id="cryptoBoyPrice"
-                  value={this.state.cryptoBoyPrice}
+                  id="cryptoDudePrice"
+                  value={this.state.cryptoDudePrice}
                   className="form-control"
                   placeholder="Enter Price In Ξ"
                   onChange={(e) =>
-                    this.setState({ cryptoBoyPrice: e.target.value })
+                    this.setState({ cryptoDudePrice: e.target.value })
                   }
                 />
               </div>
@@ -467,7 +609,7 @@ class FormAndPreview extends Component {
                       >
                         <span>&times;</span>
                       </button>
-                      {this.props.colorsUsed.length > 1 ? (
+                      {this.props.colorsUsed.length > 3 ? (
                         <strong>These colors are taken!</strong>
                       ) : (
                         <strong>This color is taken!</strong>

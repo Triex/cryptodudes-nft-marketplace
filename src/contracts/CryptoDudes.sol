@@ -13,7 +13,7 @@ contract CryptoDudes is ERC721 {
   // this contract's token symbol
   string public collectionNameSymbol;
   // total number of crypto boys minted
-  uint256 public cryptoBoyCounter;
+  uint256 public cryptoDudeCounter;
 
   // define crypto boy struct
    struct CryptoDude {
@@ -48,9 +48,9 @@ contract CryptoDudes is ERC721 {
     // check if thic fucntion caller is not an zero address account
     require(msg.sender != address(0));
     // increment counter
-    cryptoBoyCounter ++;
+    cryptoDudeCounter ++;
     // check if a token exists with the above token id => incremented counter
-    require(!_exists(cryptoBoyCounter));
+    require(!_exists(cryptoDudeCounter));
 
     // loop through the colors passed and check if each colors already exists or not
     for(uint i=0; i<_colors.length; i++) {
@@ -62,9 +62,9 @@ contract CryptoDudes is ERC721 {
     require(!tokenNameExists[_name]);
 
     // mint the token
-    _mint(msg.sender, cryptoBoyCounter);
+    _mint(msg.sender, cryptoDudeCounter);
     // set token URI (bind token id with the passed in token URI)
-    _setTokenURI(cryptoBoyCounter, _tokenURI);
+    _setTokenURI(cryptoDudeCounter, _tokenURI);
 
     // loop through the colors passed and make each of the colors as exists since the token is already minted
     for (uint i=0; i<_colors.length; i++) {
@@ -77,7 +77,7 @@ contract CryptoDudes is ERC721 {
 
     // creat a new crypto boy (struct) and pass in new values
     CryptoDude memory newCryptoDude = CryptoDude(
-    cryptoBoyCounter,
+    cryptoDudeCounter,
     _name,
     _tokenURI,
     msg.sender,
@@ -87,7 +87,7 @@ contract CryptoDudes is ERC721 {
     0,
     true);
     // add the token id and it's crypto boy to all crypto boys mapping
-    allCryptoDudes[cryptoBoyCounter] = newCryptoDude;
+    allCryptoDudes[cryptoDudeCounter] = newCryptoDude;
   }
 
   // get owner of the token
