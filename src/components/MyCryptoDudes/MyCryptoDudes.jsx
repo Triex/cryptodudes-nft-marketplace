@@ -20,7 +20,7 @@ const MyCryptoDudes = ({
       }
     }
     const my_crypto_boys = cryptoDudes.filter(
-      (cryptoboy) => cryptoboy.currentOwner === accountAddress
+      (cryptodude) => cryptodude.currentOwner === accountAddress
     );
     setMyCryptoDudes(my_crypto_boys);
   }, [cryptoDudes]);
@@ -35,10 +35,10 @@ const MyCryptoDudes = ({
         </div>
       </div>
       <div className="d-flex flex-wrap mb-2">
-        {myCryptoDudes.map((cryptoboy) => {
+        {myCryptoDudes.map((cryptodude) => {
           return (
             <div
-              key={cryptoboy.tokenId.toNumber()}
+              key={cryptodude.tokenId.toNumber()}
               className="w-50 p-4 mt-1 border"
             >
               <div className="row">
@@ -46,8 +46,13 @@ const MyCryptoDudes = ({
                   {!loading ? (
                     <CryptoDudeNFTImage
                       colors={
-                        cryptoboy.metaData !== undefined
-                          ? cryptoboy.metaData.metaData.colors
+                        cryptodude.metaData !== undefined
+                          ? cryptodude.metaData.metaData.colors
+                          : ""
+                      }
+                      pixels={
+                        cryptodude.metaData !== undefined
+                          ? cryptodude.metaData.metaData.pixels
                           : ""
                       }
                     />
@@ -57,7 +62,7 @@ const MyCryptoDudes = ({
                 </div>
                 <div className="col-md-6 text-center">
                   <MyCryptoDudeNFTDetails
-                    cryptoboy={cryptoboy}
+                    cryptodude={cryptodude}
                     accountAddress={accountAddress}
                   />
                 </div>

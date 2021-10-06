@@ -34,17 +34,17 @@ const AllCryptoDudes = ({
         </div>
       </div>
       <div className="d-flex flex-wrap mb-2">
-        {cryptoDudes.map((cryptoboy) => {
+        {cryptoDudes.map((cryptodude) => {
           return (
             <div
-              key={cryptoboy.tokenId.toNumber()}
+              key={cryptodude.tokenId.toNumber()}
               className="w-50 p-4 mt-1 border"
             >
               {!loading ? (
                 <CryptoDudeNFTImage
                   colors={
-                    cryptoboy.metaData !== undefined
-                      ? cryptoboy.metaData.metaData.colors
+                    cryptodude.metaData !== undefined
+                      ? cryptodude.metaData.metaData.colors
                       : ""
                   }
                 />
@@ -52,7 +52,7 @@ const AllCryptoDudes = ({
                 <Loading />
               )}
               <CryptoDudeNFTDetails
-                cryptoboy={cryptoboy}
+                cryptodude={cryptodude}
                 accountAddress={accountAddress}
                 changeTokenPrice={changeTokenPrice}
                 toggleForSale={toggleForSale}

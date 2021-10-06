@@ -14297,7 +14297,7 @@
                       "constant": false,
                       "id": 323,
                       "mutability": "mutable",
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "VariableDeclaration",
                       "scope": 386,
                       "src": "2791:26:0",
@@ -14406,7 +14406,7 @@
                         "rightExpression": {
                           "expression": {
                             "id": 331,
-                            "name": "cryptoboy",
+                            "name": "cryptodude",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 323,
@@ -14483,7 +14483,7 @@
                       {
                         "expression": {
                           "id": 337,
-                          "name": "cryptoboy",
+                          "name": "cryptodude",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 323,
@@ -14684,7 +14684,7 @@
                   "initialValue": {
                     "expression": {
                       "id": 350,
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 323,
@@ -14802,7 +14802,7 @@
                     "leftHandSide": {
                       "expression": {
                         "id": 360,
-                        "name": "cryptoboy",
+                        "name": "cryptodude",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 323,
@@ -14831,7 +14831,7 @@
                     "rightHandSide": {
                       "expression": {
                         "id": 363,
-                        "name": "cryptoboy",
+                        "name": "cryptodude",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 323,
@@ -14875,7 +14875,7 @@
                     "leftHandSide": {
                       "expression": {
                         "id": 367,
-                        "name": "cryptoboy",
+                        "name": "cryptodude",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 323,
@@ -14947,7 +14947,7 @@
                     "leftHandSide": {
                       "expression": {
                         "id": 374,
-                        "name": "cryptoboy",
+                        "name": "cryptodude",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 323,
@@ -15047,7 +15047,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "id": 383,
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 323,
@@ -15561,7 +15561,7 @@
                       "constant": false,
                       "id": 424,
                       "mutability": "mutable",
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "VariableDeclaration",
                       "scope": 441,
                       "src": "3465:26:0",
@@ -15636,7 +15636,7 @@
                     "leftHandSide": {
                       "expression": {
                         "id": 429,
-                        "name": "cryptoboy",
+                        "name": "cryptodude",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 424,
@@ -15732,7 +15732,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "id": 438,
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 424,
@@ -16272,7 +16272,7 @@
                       "constant": false,
                       "id": 477,
                       "mutability": "mutable",
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "VariableDeclaration",
                       "scope": 505,
                       "src": "3808:26:0",
@@ -16341,7 +16341,7 @@
                   "condition": {
                     "expression": {
                       "id": 482,
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 477,
@@ -16380,7 +16380,7 @@
                           "leftHandSide": {
                             "expression": {
                               "id": 491,
-                              "name": "cryptoboy",
+                              "name": "cryptodude",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 477,
@@ -16452,7 +16452,7 @@
                           "leftHandSide": {
                             "expression": {
                               "id": 484,
-                              "name": "cryptoboy",
+                              "name": "cryptodude",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 477,
@@ -16555,7 +16555,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "id": 502,
-                      "name": "cryptoboy",
+                      "name": "cryptodude",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 477,
@@ -21147,7 +21147,7 @@
                         "attributes": {
                           "constant": false,
                           "mutability": "mutable",
-                          "name": "cryptoboy",
+                          "name": "cryptodude",
                           "scope": 386,
                           "stateVariable": false,
                           "storageLocation": "memory",
@@ -21312,7 +21312,7 @@
                                       ],
                                       "referencedDeclaration": 323,
                                       "type": "struct CryptoDudes.CryptoDude memory",
-                                      "value": "cryptoboy"
+                                      "value": "cryptodude"
                                     },
                                     "id": 331,
                                     "name": "Identifier",
@@ -21393,7 +21393,7 @@
                                   ],
                                   "referencedDeclaration": 323,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 337,
                                 "name": "Identifier",
@@ -21574,7 +21574,7 @@
                               ],
                               "referencedDeclaration": 323,
                               "type": "struct CryptoDudes.CryptoDude memory",
-                              "value": "cryptoboy"
+                              "value": "cryptodude"
                             },
                             "id": 350,
                             "name": "Identifier",
@@ -21709,7 +21709,7 @@
                                   ],
                                   "referencedDeclaration": 323,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 360,
                                 "name": "Identifier",
@@ -21738,7 +21738,7 @@
                                   ],
                                   "referencedDeclaration": 323,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 363,
                                 "name": "Identifier",
@@ -21789,7 +21789,7 @@
                                   ],
                                   "referencedDeclaration": 323,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 367,
                                 "name": "Identifier",
@@ -21868,7 +21868,7 @@
                                   ],
                                   "referencedDeclaration": 323,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 374,
                                 "name": "Identifier",
@@ -21963,7 +21963,7 @@
                               ],
                               "referencedDeclaration": 323,
                               "type": "struct CryptoDudes.CryptoDude memory",
-                              "value": "cryptoboy"
+                              "value": "cryptodude"
                             },
                             "id": 383,
                             "name": "Identifier",
@@ -22542,7 +22542,7 @@
                         "attributes": {
                           "constant": false,
                           "mutability": "mutable",
-                          "name": "cryptoboy",
+                          "name": "cryptodude",
                           "scope": 441,
                           "stateVariable": false,
                           "storageLocation": "memory",
@@ -22640,7 +22640,7 @@
                                   ],
                                   "referencedDeclaration": 424,
                                   "type": "struct CryptoDudes.CryptoDude memory",
-                                  "value": "cryptoboy"
+                                  "value": "cryptodude"
                                 },
                                 "id": 429,
                                 "name": "Identifier",
@@ -22733,7 +22733,7 @@
                               ],
                               "referencedDeclaration": 424,
                               "type": "struct CryptoDudes.CryptoDude memory",
-                              "value": "cryptoboy"
+                              "value": "cryptodude"
                             },
                             "id": 438,
                             "name": "Identifier",
@@ -23286,7 +23286,7 @@
                         "attributes": {
                           "constant": false,
                           "mutability": "mutable",
-                          "name": "cryptoboy",
+                          "name": "cryptodude",
                           "scope": 505,
                           "stateVariable": false,
                           "storageLocation": "memory",
@@ -23374,7 +23374,7 @@
                               ],
                               "referencedDeclaration": 477,
                               "type": "struct CryptoDudes.CryptoDude memory",
-                              "value": "cryptoboy"
+                              "value": "cryptodude"
                             },
                             "id": 482,
                             "name": "Identifier",
@@ -23417,7 +23417,7 @@
                                           ],
                                           "referencedDeclaration": 477,
                                           "type": "struct CryptoDudes.CryptoDude memory",
-                                          "value": "cryptoboy"
+                                          "value": "cryptodude"
                                         },
                                         "id": 484,
                                         "name": "Identifier",
@@ -23490,7 +23490,7 @@
                                           ],
                                           "referencedDeclaration": 477,
                                           "type": "struct CryptoDudes.CryptoDude memory",
-                                          "value": "cryptoboy"
+                                          "value": "cryptodude"
                                         },
                                         "id": 491,
                                         "name": "Identifier",
@@ -23595,7 +23595,7 @@
                               ],
                               "referencedDeclaration": 477,
                               "type": "struct CryptoDudes.CryptoDude memory",
-                              "value": "cryptoboy"
+                              "value": "cryptodude"
                             },
                             "id": 502,
                             "name": "Identifier",
@@ -23639,7 +23639,7 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0x567b29F355B27c8A95f7ACe34e9fd57BEB4E2830",
+      "address": "0x941613EE350791D0b155B679d8b1E72D7CBCc1dA",
       "transactionHash": "0x25f92d062cc1ee642685e3dd44e144b0d323872a73d67c6680fecc40771e8a41"
     }
   },

@@ -1,6 +1,6 @@
 import React from "react";
 
-const CryptoDudeNFTImage = ({ colors }) => {
+const CryptoDudeNFTImage = ({ colors, pixels }) => {
   const {
     cardBorderColor,
     cardBackgroundColor,
@@ -28,7 +28,7 @@ const CryptoDudeNFTImage = ({ colors }) => {
     bodyWidth = '90',
   } = pixels;
 
-  const cryptoboy_card = {
+  const cryptodude_card = {
     width: "280px",
     height: "260px",
     margin: "auto",
@@ -142,7 +142,7 @@ const CryptoDudeNFTImage = ({ colors }) => {
   };
 
   return (
-    <div style={cryptoboy_card}>
+    <div style={cryptodude_card}>
       <div style={head}>
         <div style={eyeLeft}>
           <div style={pupilLeft}></div>

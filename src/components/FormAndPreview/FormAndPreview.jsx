@@ -26,8 +26,8 @@ class FormAndPreview extends Component {
       ],
       cryptoDudeName: "",
       cryptoDudePrice: "",
-    };
-    userSelectedPixels: [
+
+      userSelectedPixels: [
       {
           leftEyeWidth: "60",
           leftEyeHeight: "60",
@@ -37,6 +37,8 @@ class FormAndPreview extends Component {
           bodyWidth: "90",
       },
     ],
+    
+    };
   }
 
   componentDidMount = async () => {

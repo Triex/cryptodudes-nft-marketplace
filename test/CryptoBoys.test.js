@@ -112,25 +112,25 @@ contract("Crypto Dudes", async (accounts) => {
         assert.equal(colorExists, true);
       }
 
-      let cryptoboy;
-      cryptoboy = await cryptoDudes.allCryptoDudes(1, {
+      let cryptodude;
+      cryptodude = await cryptoDudes.allCryptoDudes(1, {
         from: accounts[0],
       });
-      assert.equal(cryptoboy.tokenId.toNumber(), 1);
-      assert.equal(cryptoboy.tokenName, "myCBNFT");
+      assert.equal(cryptodude.tokenId.toNumber(), 1);
+      assert.equal(cryptodude.tokenName, "myCBNFT");
       assert.equal(
-        cryptoboy.tokenURI,
+        cryptodude.tokenURI,
         "https://gateway.pinata.cloud/ipfs/QmYFmJgQGH4uPHRYN15Xdv4aLd9o4Aq63y1e4GgN6kj5aK/2"
       );
-      assert.equal(cryptoboy.mintedBy, accounts[0]);
-      assert.equal(cryptoboy.currentOwner, accounts[0]);
+      assert.equal(cryptodude.mintedBy, accounts[0]);
+      assert.equal(cryptodude.currentOwner, accounts[0]);
       assert.equal(
-        cryptoboy.previousOwner,
+        cryptodude.previousOwner,
         0x0000000000000000000000000000000000000000
       );
-      assert.equal(web3.utils.fromWei(cryptoboy.price, "ether"), 1);
-      assert.equal(cryptoboy.numberOfTransfers.toNumber(), 0);
-      assert.equal(cryptoboy.forSale, true);
+      assert.equal(web3.utils.fromWei(cryptodude.price, "ether"), 1);
+      assert.equal(cryptodude.numberOfTransfers.toNumber(), 0);
+      assert.equal(cryptodude.forSale, true);
 
       const colorsArray2 = [
         "#212b2e",
@@ -453,25 +453,25 @@ contract("Crypto Dudes", async (accounts) => {
     });
 
     it("allows users to toggle between setting the token for sale or not for sale", async () => {
-      let cryptoboy;
-      cryptoboy = await cryptoDudes.allCryptoDudes(1, {
+      let cryptodude;
+      cryptodude = await cryptoDudes.allCryptoDudes(1, {
         from: accounts[0],
       });
-      assert.equal(cryptoboy.forSale, true);
+      assert.equal(cryptodude.forSale, true);
 
       result = await cryptoDudes.toggleForSale(1, { from: accounts[2] });
 
-      cryptoboy = await cryptoDudes.allCryptoDudes(1, {
+      cryptodude = await cryptoDudes.allCryptoDudes(1, {
         from: accounts[0],
       });
-      assert.equal(cryptoboy.forSale, false);
+      assert.equal(cryptodude.forSale, false);
 
       result = await cryptoDudes.toggleForSale(1, { from: accounts[2] });
 
-      cryptoboy = await cryptoDudes.allCryptoDudes(1, {
+      cryptodude = await cryptoDudes.allCryptoDudes(1, {
         from: accounts[0],
       });
-      assert.equal(cryptoboy.forSale, true);
+      assert.equal(cryptodude.forSale, true);
 
       await cryptoDudes.toggleForSale(1, {
         from: 0x0000000000000000000000000000000000000000,

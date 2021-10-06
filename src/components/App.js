@@ -154,26 +154,27 @@ class App extends Component {
 
   setMetaData = async () => {
     if (this.state.cryptoDudes.length !== 0) {
-      this.state.cryptoDudes.map(async (cryptoboy) => {
-        const result = await fetch(cryptoboy.tokenURI);
+      this.state.cryptoDudes.map(async (cryptodude) => {
+        const result = await fetch(cryptodude.tokenURI);
         const metaData = await result.json();
         this.setState({
-          cryptoDudes: this.state.cryptoDudes.map((cryptoboy) =>
-            cryptoboy.tokenId.toNumber() === Number(metaData.tokenId)
+          cryptoDudes: this.state.cryptoDudes.map((cryptodude) =>
+            cryptodude.tokenId.toNumber() === Number(metaData.tokenId)
               ? {
-                  ...cryptoboy,
+                  ...cryptodude,
                   metaData,
                 }
-              : cryptoboy
+              : cryptodude
           ),
         });
       });
     }
   };
 
-  mintMyNFT = async (colors, name, tokenPrice) => {
+  mintMyNFT = async (colors, pixels, name, tokenPrice) => {
     this.setState({ loading: true });
     const colorsArray = Object.values(colors);
+    const pixelsArray = Object.values(pixels);
     let colorsUsed = [];
     for (let i = 0; i < colorsArray.length; i++) {
       if (colorsArray[i] !== "") {
@@ -208,6 +209,14 @@ class App extends Component {
               bodyBackgroundColor,
               bodyBorderColor,
       } = colors;
+      const { 
+            leftEyeWidth,
+            leftEyeHeight,
+            rightEyeWidth,
+            rightEyeHeight,
+            mouthWidth,
+            bodyWidth,
+     } = pixels;
       let previousTokenId;
       previousTokenId = await this.state.cryptoDudesContract.methods
         .cryptoDudeCounter()
@@ -255,7 +264,7 @@ class App extends Component {
       let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
       const price = window.web3.utils.toWei(tokenPrice.toString(), "Ether");
       this.state.cryptoDudesContract.methods
-        .mintCryptoDude(name, tokenURI, price, colorsArray)
+        .mintCryptoDude(name, tokenURI, price, colorsArray, pixelsArray)
         .send({ from: this.state.accountAddress })
         .on("confirmation", () => {
           localStorage.setItem(this.state.accountAddress, new Date().getTime());
