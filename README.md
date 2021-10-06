@@ -1,5 +1,6 @@
 # Crypto Dude NFT Marketplace
 <i>NFT marketplace DApp where users mint ERC721 implemented Crypto Dude NFTs.</i>
+'Crypto Dudes' is the temporary name while testing. Art will have a different form factor.
 #
 <img align="right" width="350" src="./image.png"></img>
 ### Features
