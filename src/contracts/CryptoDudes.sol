@@ -5,8 +5,8 @@ pragma abicoder v2;
 // import ERC721 iterface
 import "./ERC721.sol";
 
-// CryptoBoys smart contract inherits ERC721 interface
-contract CryptoBoys is ERC721 {
+// CryptoDudes smart contract inherits ERC721 interface
+contract CryptoDudes is ERC721 {
 
   // this contract's token collection name
   string public collectionName;
@@ -16,7 +16,7 @@ contract CryptoBoys is ERC721 {
   uint256 public cryptoBoyCounter;
 
   // define crypto boy struct
-   struct CryptoBoy {
+   struct CryptoDude {
     uint256 tokenId;
     string tokenName;
     string tokenURI;
@@ -29,7 +29,7 @@ contract CryptoBoys is ERC721 {
   }
 
   // map cryptoboy's token id to crypto boy
-  mapping(uint256 => CryptoBoy) public allCryptoBoys;
+  mapping(uint256 => CryptoDude) public allCryptoDudes;
   // check if token name exists
   mapping(string => bool) public tokenNameExists;
   // check if color exists
@@ -38,13 +38,13 @@ contract CryptoBoys is ERC721 {
   mapping(string => bool) public tokenURIExists;
 
   // initialize contract while deployment with contract's collection name and token
-  constructor() ERC721("Crypto Boys Collection", "CB") {
+  constructor() ERC721("Crypto Dudes Collection", "CB") {
     collectionName = name();
     collectionNameSymbol = symbol();
   }
 
   // mint a new crypto boy
-  function mintCryptoBoy(string memory _name, string memory _tokenURI, uint256 _price, string[] calldata _colors) external {
+  function mintCryptoDude(string memory _name, string memory _tokenURI, uint256 _price, string[] calldata _colors) external {
     // check if thic fucntion caller is not an zero address account
     require(msg.sender != address(0));
     // increment counter
@@ -76,7 +76,7 @@ contract CryptoBoys is ERC721 {
     tokenNameExists[_name] = true;
 
     // creat a new crypto boy (struct) and pass in new values
-    CryptoBoy memory newCryptoBoy = CryptoBoy(
+    CryptoDude memory newCryptoDude = CryptoDude(
     cryptoBoyCounter,
     _name,
     _tokenURI,
@@ -87,7 +87,7 @@ contract CryptoBoys is ERC721 {
     0,
     true);
     // add the token id and it's crypto boy to all crypto boys mapping
-    allCryptoBoys[cryptoBoyCounter] = newCryptoBoy;
+    allCryptoDudes[cryptoBoyCounter] = newCryptoDude;
   }
 
   // get owner of the token
@@ -132,8 +132,8 @@ contract CryptoBoys is ERC721 {
     require(tokenOwner != address(0));
     // the one who wants to buy the token should not be the token's owner
     require(tokenOwner != msg.sender);
-    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoBoy)
-    CryptoBoy memory cryptoboy = allCryptoBoys[_tokenId];
+    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoDude)
+    CryptoDude memory cryptoboy = allCryptoDudes[_tokenId];
     // price sent in to buy should be equal to or more than the token's price
     require(msg.value >= cryptoboy.price);
     // token should be for sale
@@ -151,7 +151,7 @@ contract CryptoBoys is ERC721 {
     // update the how many times this token was transfered
     cryptoboy.numberOfTransfers += 1;
     // set and update that token in the mapping
-    allCryptoBoys[_tokenId] = cryptoboy;
+    allCryptoDudes[_tokenId] = cryptoboy;
   }
 
   function changeTokenPrice(uint256 _tokenId, uint256 _newPrice) public {
@@ -163,12 +163,12 @@ contract CryptoBoys is ERC721 {
     address tokenOwner = ownerOf(_tokenId);
     // check that token's owner should be equal to the caller of the function
     require(tokenOwner == msg.sender);
-    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoBoy)
-    CryptoBoy memory cryptoboy = allCryptoBoys[_tokenId];
+    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoDude)
+    CryptoDude memory cryptoboy = allCryptoDudes[_tokenId];
     // update token's price with new price
     cryptoboy.price = _newPrice;
     // set and update that token in the mapping
-    allCryptoBoys[_tokenId] = cryptoboy;
+    allCryptoDudes[_tokenId] = cryptoboy;
   }
 
   // switch between set for sale and set not for sale
@@ -181,8 +181,8 @@ contract CryptoBoys is ERC721 {
     address tokenOwner = ownerOf(_tokenId);
     // check that token's owner should be equal to the caller of the function
     require(tokenOwner == msg.sender);
-    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoBoy)
-    CryptoBoy memory cryptoboy = allCryptoBoys[_tokenId];
+    // get that token from all crypto boys mapping and create a memory of it defined as (struct => CryptoDude)
+    CryptoDude memory cryptoboy = allCryptoDudes[_tokenId];
     // if token's forSale is false make it true and vice versa
     if(cryptoboy.forSale) {
       cryptoboy.forSale = false;
@@ -190,6 +190,6 @@ contract CryptoBoys is ERC721 {
       cryptoboy.forSale = true;
     }
     // set and update that token in the mapping
-    allCryptoBoys[_tokenId] = cryptoboy;
+    allCryptoDudes[_tokenId] = cryptoboy;
   }
 }

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import CryptoBoyNFTImage from "../CryptoBoyNFTImage/CryptoBoyNFTImage";
-import MyCryptoBoyNFTDetails from "../MyCryptoBoyNFTDetails/MyCryptoBoyNFTDetails";
+import CryptoDudeNFTImage from "../CryptoDudeNFTImage/CryptoDudeNFTImage";
+import MyCryptoDudeNFTDetails from "../MyCryptoDudeNFTDetails/MyCryptoDudeNFTDetails";
 import Loading from "../Loading/Loading";
 
-const MyCryptoBoys = ({
+const MyCryptoDudes = ({
   accountAddress,
   cryptoBoys,
   totalTokensOwnedByAccount,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [myCryptoBoys, setMyCryptoBoys] = useState([]);
+  const [myCryptoDudes, setMyCryptoDudes] = useState([]);
 
   useEffect(() => {
     if (cryptoBoys.length !== 0) {
@@ -22,7 +22,7 @@ const MyCryptoBoys = ({
     const my_crypto_boys = cryptoBoys.filter(
       (cryptoboy) => cryptoboy.currentOwner === accountAddress
     );
-    setMyCryptoBoys(my_crypto_boys);
+    setMyCryptoDudes(my_crypto_boys);
   }, [cryptoBoys]);
 
   return (
@@ -30,12 +30,12 @@ const MyCryptoBoys = ({
       <div className="card mt-1">
         <div className="card-body align-items-center d-flex justify-content-center">
           <h5>
-            Total No. of CryptoBoy's You Own : {totalTokensOwnedByAccount}
+            Total No. of CryptoDude's You Own : {totalTokensOwnedByAccount}
           </h5>
         </div>
       </div>
       <div className="d-flex flex-wrap mb-2">
-        {myCryptoBoys.map((cryptoboy) => {
+        {myCryptoDudes.map((cryptoboy) => {
           return (
             <div
               key={cryptoboy.tokenId.toNumber()}
@@ -44,7 +44,7 @@ const MyCryptoBoys = ({
               <div className="row">
                 <div className="col-md-6">
                   {!loading ? (
-                    <CryptoBoyNFTImage
+                    <CryptoDudeNFTImage
                       colors={
                         cryptoboy.metaData !== undefined
                           ? cryptoboy.metaData.metaData.colors
@@ -56,7 +56,7 @@ const MyCryptoBoys = ({
                   )}
                 </div>
                 <div className="col-md-6 text-center">
-                  <MyCryptoBoyNFTDetails
+                  <MyCryptoDudeNFTDetails
                     cryptoboy={cryptoboy}
                     accountAddress={accountAddress}
                   />
@@ -70,4 +70,4 @@ const MyCryptoBoys = ({
   );
 };
 
-export default MyCryptoBoys;
+export default MyCryptoDudes;

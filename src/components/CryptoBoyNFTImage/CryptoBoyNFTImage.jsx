@@ -1,6 +1,6 @@
 import React from "react";
 
-const CryptoBoyNFTImage = ({ colors }) => {
+const CryptoDudeNFTImage = ({ colors }) => {
   const {
     cardBorderColor,
     cardBackgroundColor,
@@ -152,4 +152,4 @@ const CryptoBoyNFTImage = ({ colors }) => {
   );
 };
 
-export default CryptoBoyNFTImage;
+export default CryptoDudeNFTImage;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-class CryptoBoyNFTDetails extends Component {
+class CryptoDudeNFTDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newCryptoBoyPrice: "",
+      newCryptoDudePrice: "",
     };
   }
 
@@ -66,25 +66,25 @@ class CryptoBoyNFTDetails extends Component {
                 e.preventDefault();
                 this.callChangeTokenPriceFromApp(
                   this.props.cryptoboy.tokenId.toNumber(),
-                  this.state.newCryptoBoyPrice
+                  this.state.newCryptoDudePrice
                 );
               }}
             >
               <div className="form-group mt-4 ">
-                <label htmlFor="newCryptoBoyPrice">
+                <label htmlFor="newCryptoDudePrice">
                   <span className="font-weight-bold">Change Token Price</span> :
                 </label>{" "}
                 <input
                   required
                   type="number"
-                  name="newCryptoBoyPrice"
-                  id="newCryptoBoyPrice"
-                  value={this.state.newCryptoBoyPrice}
+                  name="newCryptoDudePrice"
+                  id="newCryptoDudePrice"
+                  value={this.state.newCryptoDudePrice}
                   className="form-control w-50"
                   placeholder="Enter new price"
                   onChange={(e) =>
                     this.setState({
-                      newCryptoBoyPrice: e.target.value,
+                      newCryptoDudePrice: e.target.value,
                     })
                   }
                 />
@@ -136,7 +136,7 @@ class CryptoBoyNFTDetails extends Component {
                 value={this.props.cryptoboy.price}
                 style={{ fontSize: "0.8rem", letterSpacing: "0.14rem" }}
                 onClick={(e) =>
-                  this.props.buyCryptoBoy(
+                  this.props.buyCryptoDude(
                     this.props.cryptoboy.tokenId.toNumber(),
                     e.target.value
                   )
@@ -173,4 +173,4 @@ class CryptoBoyNFTDetails extends Component {
   }
 }
 
-export default CryptoBoyNFTDetails;
+export default CryptoDudeNFTDetails;

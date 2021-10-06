@@ -1,5 +1,5 @@
-const CryptoBoys = artifacts.require("CryptoBoys");
+const CryptoDudes = artifacts.require("CryptoDudes");
 
 module.exports = async function(deployer) {
-  await deployer.deploy(CryptoBoys);
+  await deployer.deploy(CryptoDudes);
 };

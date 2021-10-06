@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyCryptoBoyNFTDetails = (props) => {
+const MyCryptoDudeNFTDetails = (props) => {
   const {
     tokenId,
     tokenName,
@@ -38,4 +38,4 @@ const MyCryptoBoyNFTDetails = (props) => {
   );
 };
 
-export default MyCryptoBoyNFTDetails;
+export default MyCryptoDudeNFTDetails;

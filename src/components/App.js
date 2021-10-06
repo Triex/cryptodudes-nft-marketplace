@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.css";
 import Web3 from "web3";
-import CryptoBoys from "../abis/CryptoBoys.json";
+import CryptoDudes from "../abis/CryptoDudes.json";
 
 import FormAndPreview from "../components/FormAndPreview/FormAndPreview";
-import AllCryptoBoys from "./AllCryptoBoys/AllCryptoBoys";
+import AllCryptoDudes from "./AllCryptoDudes/AllCryptoDudes";
 import AccountDetails from "./AccountDetails/AccountDetails";
 import ContractNotDeployed from "./ContractNotDeployed/ContractNotDeployed";
 import ConnectToMetamask from "./ConnectMetamask/ConnectToMetamask";
 import Loading from "./Loading/Loading";
 import Navbar from "./Navbar/Navbar";
-import MyCryptoBoys from "./MyCryptoBoys/MyCryptoBoys";
+import MyCryptoDudes from "./MyCryptoDudes/MyCryptoDudes";
 import Queries from "./Queries/Queries";
 
 const ipfsClient = require("ipfs-http-client");
@@ -56,7 +56,7 @@ class App extends Component {
         lastMintTime: localStorage.getItem(this.state.accountAddress),
       });
       this.state.lastMintTime === undefined || this.state.lastMintTime === null
-        ? (mintBtn.innerHTML = "Mint My Crypto Boy")
+        ? (mintBtn.innerHTML = "Mint My Crypto Dude")
         : this.checkIfCanMint(parseInt(this.state.lastMintTime));
     }
   };
@@ -70,7 +70,7 @@ class App extends Component {
       const diff = countDownTime - now;
       if (diff < 0) {
         mintBtn.removeAttribute("disabled");
-        mintBtn.innerHTML = "Mint My Crypto Boy";
+        mintBtn.innerHTML = "Mint My Crypto Dude";
         localStorage.removeItem(this.state.accountAddress);
         clearInterval(interval);
       } else {
@@ -108,11 +108,11 @@ class App extends Component {
       this.setState({ accountBalance });
       this.setState({ loading: false });
       const networkId = await web3.eth.net.getId();
-      const networkData = CryptoBoys.networks[networkId];
+      const networkData = CryptoDudes.networks[networkId];
       if (networkData) {
         this.setState({ loading: true });
         const cryptoBoysContract = web3.eth.Contract(
-          CryptoBoys.abi,
+          CryptoDudes.abi,
           networkData.address
         );
         this.setState({ cryptoBoysContract });
@@ -123,7 +123,7 @@ class App extends Component {
         this.setState({ cryptoBoysCount });
         for (var i = 1; i <= cryptoBoysCount; i++) {
           const cryptoBoy = await cryptoBoysContract.methods
-            .allCryptoBoys(i)
+            .allCryptoDudes(i)
             .call();
           this.setState({
             cryptoBoys: [...this.state.cryptoBoys, cryptoBoy],
@@ -215,7 +215,7 @@ class App extends Component {
       previousTokenId = previousTokenId.toNumber();
       const tokenId = previousTokenId + 1;
       const tokenObject = {
-        tokenName: "Crypto Boy",
+        tokenName: "Crypto Dude",
         tokenSymbol: "CB",
         tokenId: `${tokenId}`,
         name: name,
@@ -244,7 +244,7 @@ class App extends Component {
       let tokenURI = `https://ipfs.infura.io/ipfs/${cid.path}`;
       const price = window.web3.utils.toWei(tokenPrice.toString(), "Ether");
       this.state.cryptoBoysContract.methods
-        .mintCryptoBoy(name, tokenURI, price, colorsArray)
+        .mintCryptoDude(name, tokenURI, price, colorsArray)
         .send({ from: this.state.accountAddress })
         .on("confirmation", () => {
           localStorage.setItem(this.state.accountAddress, new Date().getTime());
@@ -286,7 +286,7 @@ class App extends Component {
       });
   };
 
-  buyCryptoBoy = (tokenId, price) => {
+  buyCryptoDude = (tokenId, price) => {
     this.setState({ loading: true });
     this.state.cryptoBoysContract.methods
       .buyToken(tokenId)
@@ -335,20 +335,20 @@ class App extends Component {
               <Route
                 path="/marketplace"
                 render={() => (
-                  <AllCryptoBoys
+                  <AllCryptoDudes
                     accountAddress={this.state.accountAddress}
                     cryptoBoys={this.state.cryptoBoys}
                     totalTokensMinted={this.state.totalTokensMinted}
                     changeTokenPrice={this.changeTokenPrice}
                     toggleForSale={this.toggleForSale}
-                    buyCryptoBoy={this.buyCryptoBoy}
+                    buyCryptoDude={this.buyCryptoDude}
                   />
                 )}
               />
               <Route
                 path="/my-tokens"
                 render={() => (
-                  <MyCryptoBoys
+                  <MyCryptoDudes
                     accountAddress={this.state.accountAddress}
                     cryptoBoys={this.state.cryptoBoys}
                     totalTokensOwnedByAccount={

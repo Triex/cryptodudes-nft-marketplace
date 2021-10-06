@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import CryptoBoyNFTImage from "../CryptoBoyNFTImage/CryptoBoyNFTImage";
-import CryptoBoyNFTDetails from "../CryptoBoyNFTDetails/CryptoBoyNFTDetails";
+import CryptoDudeNFTImage from "../CryptoDudeNFTImage/CryptoDudeNFTImage";
+import CryptoDudeNFTDetails from "../CryptoDudeNFTDetails/CryptoDudeNFTDetails";
 import Loading from "../Loading/Loading";
 
-const AllCryptoBoys = ({
+const AllCryptoDudes = ({
   cryptoBoys,
   accountAddress,
   totalTokensMinted,
   changeTokenPrice,
   toggleForSale,
-  buyCryptoBoy,
+  buyCryptoDude,
 }) => {
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +28,7 @@ const AllCryptoBoys = ({
       <div className="card mt-1">
         <div className="card-body align-items-center d-flex justify-content-center">
           <h5>
-            Total No. of CryptoBoy's Minted On The Platform :{" "}
+            Total No. of CryptoDude's Minted On The Platform :{" "}
             {totalTokensMinted}
           </h5>
         </div>
@@ -41,7 +41,7 @@ const AllCryptoBoys = ({
               className="w-50 p-4 mt-1 border"
             >
               {!loading ? (
-                <CryptoBoyNFTImage
+                <CryptoDudeNFTImage
                   colors={
                     cryptoboy.metaData !== undefined
                       ? cryptoboy.metaData.metaData.colors
@@ -51,12 +51,12 @@ const AllCryptoBoys = ({
               ) : (
                 <Loading />
               )}
-              <CryptoBoyNFTDetails
+              <CryptoDudeNFTDetails
                 cryptoboy={cryptoboy}
                 accountAddress={accountAddress}
                 changeTokenPrice={changeTokenPrice}
                 toggleForSale={toggleForSale}
-                buyCryptoBoy={buyCryptoBoy}
+                buyCryptoDude={buyCryptoDude}
               />
             </div>
           );
@@ -66,4 +66,4 @@ const AllCryptoBoys = ({
   );
 };
 
-export default AllCryptoBoys;
+export default AllCryptoDudes;
